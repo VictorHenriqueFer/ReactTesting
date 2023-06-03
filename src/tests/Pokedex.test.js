@@ -13,11 +13,10 @@ describe('Testando o componente Pokedex', () => {
   });
   it('Teste se é exibido o próximo Pokémon da lista quando o botão Próximo Pokémon é clicado', () => {
     renderWithRouter(<App />);
-    const goButton = screen.getByTestId('next-pokemon');
     const namePokemon = screen.getByTestId('pokemon-name');
-    expect(goButton.type).toBe('button');
     expect(namePokemon).toHaveTextContent('Pikachu');
     pokemonList.forEach((pokemon, i) => {
+      const goButton = screen.getByRole('button', { name: /Próximo Pokémon/i });
       const expectedName = screen.getAllByTestId('pokemon-name');
       expect(expectedName).toHaveLength(1);
       expect(namePokemon).toHaveTextContent(pokemon.name);
