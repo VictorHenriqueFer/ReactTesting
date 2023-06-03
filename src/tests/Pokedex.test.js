@@ -26,7 +26,7 @@ describe('Testando o componente Pokedex', () => {
       }
     });
   });
-  it('Teste se a Pokédex tem os botões de filtro', async () => {
+  it('Teste se a Pokédex tem os botões de filtro', () => {
     renderWithRouter(<App />);
     const allButtons = screen.getAllByTestId('pokemon-type-button');
     expect(allButtons.length).toBe(7);
