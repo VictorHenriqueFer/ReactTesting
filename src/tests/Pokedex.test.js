@@ -28,6 +28,8 @@ describe('Testando o componente Pokedex', () => {
   });
   it('Teste se a Pokédex tem os botões de filtro', async () => {
     renderWithRouter(<App />);
+    const allButtons = screen.getAllByTestId('pokemon-type-button');
+    expect(allButtons.length).toBe(7);
     const pikachuTest = screen.getByText('Pikachu');
     expect(pikachuTest).toBeInTheDocument();
     const buttonFire = screen.getByRole('button', { name: /Fire/i });
