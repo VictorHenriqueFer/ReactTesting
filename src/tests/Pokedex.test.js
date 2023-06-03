@@ -27,12 +27,17 @@ describe('Testando o componente Pokedex', () => {
       }
     });
   });
-  // it('Teste se a Pokédex tem os botões de filtro', async () => {
-  //   renderWithRouter(<App />);
-  //   const pokeType = pokemonList.reduce((prevPokemon, currPokemon) => {
-  //     if (!prevPokemon.includes(currPokemon.type)) {
-  //       return [...prevPokemon, currPokemon.type];
-  //     }
-  //   });
-  // });
+  it('Teste se a Pokédex tem os botões de filtro', async () => {
+    renderWithRouter(<App />);
+    const pikachuTest = screen.getByText('Pikachu');
+    expect(pikachuTest).toBeInTheDocument();
+    const buttonFire = screen.getByRole('button', { name: /Fire/i });
+    userEvent.click(buttonFire);
+    const chamandTest = screen.getByText('Charmander');
+    expect(chamandTest).toBeInTheDocument();
+    const buttonAll = screen.getByRole('button', { name: /All/i });
+    userEvent.click(buttonAll);
+    const pikachuAll = screen.getByText('Pikachu');
+    expect(pikachuAll).toBeInTheDocument();
+  });
 });
